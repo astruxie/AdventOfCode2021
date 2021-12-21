@@ -5,28 +5,28 @@
 
 # Variables
 values = []
-count = 0
-sum = 0
-prevSum = 0
+count = int(0)
+summ = 0
+prevSum = int(0)
 
 # Putting it all into a list for easier indexing
 f = open("input.txt", "r")
 for measurement in f:
-    print(measurement)
-    values.append(measurement)
+    values.append(int(measurement))
 
 
 # Doing the adding and comparing
-for i, measure in enumerate(values):
-    sum = measure + values[i + 1] + values[i + 2]
-    print(sum)
-    if int(sum) > int(prevSum):
+for i in range(2, len(values)):
+    summ = sum(values[i - 2 : i + 1])
+
+    if summ > prevSum:
         count+= 1
-    prevSum = sum
+
+    prevSum = summ
 
     
 # Adjust my extra compare
 count-= 1
 
 # Print out answer
-print("There are " + str(count) + " sums greater than the last")
+print(f"There are {count} sums greater than the last")
